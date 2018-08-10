@@ -2,8 +2,7 @@ package exchange;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class DollarTest {
     @Test void testMultiplication() {
@@ -22,4 +21,13 @@ class DollarTest {
                 () -> assertEquals(15, fifteen.amount)
         );
     }
+
+    @Test void testEquality() {
+        assertAll(
+                () -> assertEquals(new Dollar(5), new Dollar(5)),
+                () -> assertNotEquals(new Dollar(5), new Dollar(7))
+        );
+    }
+
+
 }
