@@ -19,6 +19,4 @@ class DollarTest {
             () -> assertNotEquals(new Dollar(5), new Dollar(7))
         );
     }
-
-
 }

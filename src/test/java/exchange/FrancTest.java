@@ -12,4 +12,11 @@ class FrancTest {
             () -> assertEquals(new Franc(15), five.times(3))
         );
     }
+
+    @Test void testEquality() {
+        assertAll(
+            () -> assertEquals(new Franc(5), new Franc(5)),
+            () -> assertNotEquals(new Franc(5), new Franc(7))
+        );
+    }
 }
