@@ -6,28 +6,28 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MoneyTest {
     @Test void testDollarMultiplicationTwoTimes() {
-        Dollar five = new Dollar(5);
+        Money five = Money.dollar(5);
         assertAll(
-            () -> assertEquals(new Dollar(10), five.times(2)),
-            () -> assertEquals(new Dollar(15), five.times(3))
+            () -> assertEquals(Money.dollar(10), five.times(2)),
+            () -> assertEquals(Money.dollar(15), five.times(3))
         );
     }
 
     @Test void testFrancMultiplicationTwoTimes() {
-        Franc five = new Franc(5);
+        Money five = Money.franc(5);
         assertAll(
-            () -> assertEquals(new Franc(10), five.times(2)),
-            () -> assertEquals(new Franc(15), five.times(3))
+            () -> assertEquals(Money.franc(10), five.times(2)),
+            () -> assertEquals(Money.franc(15), five.times(3))
         );
     }
 
     @Test void testEquality() {
         assertAll(
-            () -> assertEquals(new Dollar(5), new Dollar(5)),
-            () -> assertNotEquals(new Dollar(5), new Dollar(7)),
-            () -> assertEquals(new Franc(5), new Franc(5)),
-            () -> assertNotEquals(new Franc(5), new Franc(7)),
-            () -> assertNotEquals(new Franc(5), new Dollar(5))
+            () -> assertEquals(Money.dollar(5), Money.dollar(5)),
+            () -> assertNotEquals(Money.dollar(5), Money.dollar(7)),
+            () -> assertEquals(Money.franc(5), Money.franc(5)),
+            () -> assertNotEquals(Money.franc(5), Money.franc(7)),
+            () -> assertNotEquals(Money.franc(5), Money.dollar(5))
         );
     }
 }
