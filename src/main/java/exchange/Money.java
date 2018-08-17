@@ -1,6 +1,8 @@
 package exchange;
 
-abstract class Money {
+import java.util.Objects;
+
+class Money {
     protected int amount;
     protected String currency;
 
@@ -9,7 +11,9 @@ abstract class Money {
         this.currency = currency;
     }
 
-    abstract Money times(int amount);
+    Money times(int multiplier) {
+        return new Money(amount * multiplier, currency);
+    }
 
     public static Dollar dollar(int amount) {
         return new Dollar(amount, "USD");
@@ -24,8 +28,13 @@ abstract class Money {
     }
 
     @Override
+    public String toString() {
+        return amount + " " + currency;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         Money money = (Money) obj;
-        return this.amount == money.amount && this.getClass().equals(money.getClass());
+        return this.amount == money.amount && Objects.equals(this.currency, money.currency);
     }
 }
