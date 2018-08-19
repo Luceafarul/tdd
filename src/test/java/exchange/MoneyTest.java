@@ -13,6 +13,14 @@ class MoneyTest {
         );
     }
 
+    @Test void testSimpleAddition() {
+        Money ten = Money.dollar(10);
+        Expression sum = ten.plus(ten);
+        Bank bank = new Bank();
+        Money reduced = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(20), reduced);
+    }
+
     @Test void testEquality() {
         assertAll(
             () -> assertEquals(Money.dollar(5), Money.dollar(5)),

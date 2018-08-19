@@ -2,13 +2,17 @@ package exchange;
 
 import java.util.Objects;
 
-class Money {
+class Money implements Expression {
     protected int amount;
     protected String currency;
 
     public Money(int amount, String currency) {
         this.amount = amount;
         this.currency = currency;
+    }
+
+    Expression plus(Money money) {
+        return new Money(this.amount + money.amount, currency);
     }
 
     Money times(int multiplier) {
