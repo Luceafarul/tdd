@@ -21,6 +21,27 @@ class MoneyTest {
         assertEquals(Money.dollar(20), reduced);
     }
 
+    @Test void testPlusReturnsSum() {
+        Money ten = Money.dollar(10);
+        Expression result = ten.plus(ten);
+        Sum sum = (Sum) result;
+        assertEquals(ten, sum.augend);
+        assertEquals(ten, sum.addend);
+    }
+
+    @Test void testReduceSum() {
+        Expression sum = new Sum(Money.dollar(13), Money.dollar(11));
+        Bank bank = new Bank();
+        Money result = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(24), result);
+    }
+
+    @Test void testReduceMoney() {
+        Bank bank = new Bank();
+        Money result = bank.reduce(Money.dollar(1), "USD");
+        assertEquals(Money.dollar(1), result);
+    }
+
     @Test void testEquality() {
         assertAll(
             () -> assertEquals(Money.dollar(5), Money.dollar(5)),
