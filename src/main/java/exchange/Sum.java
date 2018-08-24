@@ -14,7 +14,11 @@ public class Sum implements Expression {
         return new Money(amount, to);
     }
 
-    public Expression plus(Expression added) {
-        return null;
+    public Expression plus(Expression addend) {
+        return new Sum(this, addend);
+    }
+
+    public Expression times(int multiplier) {
+        return new Sum(augend.times(multiplier), addend.times(multiplier));
     }
 }
